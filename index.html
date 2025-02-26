@@ -1,7 +1,15 @@
-<button>Play</button>
+<script>
+var sound = new Audio();
+sound.src = 'aaa.mp3';
+</script>
 
-<audio>
-  <source src="//www.w3schools.com/html/horse.ogg" type="audio/ogg">
-  <source src="//www.w3schools.com/html/horse.mp3" type="audio/mpeg">
-  Your browser does not support the audio element.
-</audio>
+<style>
+  img {
+    width: 98vw;
+    height: 90vh;
+  }
+  </style>
+
+<nav id="nav1">
+<img src="min.jpg" onmousedown="sound.play()">
+</nav>
