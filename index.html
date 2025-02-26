@@ -1,5 +1,24 @@
-<play-button>
-	<audio controls src="https://www.myinstants.com/media/sounds/y2mate_5gbydy1.mp3"></audio>
-	<button class="sound-btn">play</button>
-</play-button>
-<script src="script.js"></script>
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="description" content="Demo of play-button Web Component" />
+		<title>play-button Web Component Demo</title>
+
+		<style>
+			play-button:defined audio,
+			play-button:not(:defined) button {
+				display: none;
+			}
+		</style>
+
+		<script type="module" src="play-button.js"></script>
+	</head>
+	<body>
+    		<play-button>
+  			<audio controls src="https://darn.es/sounds/daviddarnes.m4a"></audio>
+  			<button>Play</button>
+		</play-button>
+	</body>
+</html>
